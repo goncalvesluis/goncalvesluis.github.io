@@ -15,6 +15,8 @@
     --global-typography-text-font-weight: 400;
     --global-typography-accent-font-family: "Roboto";
     --global-typography-accent-font-weight: 500;
+    --background: #222;
+    --primary:#f58545;
 }
 
 body {
@@ -35,6 +37,7 @@ body {
     background-position: center;
     background-position: 50% 50%;
     background-size: cover;
+    background-color: var(--primary);
 }
 
 a {
@@ -63,7 +66,6 @@ ul {
     width: 100%;
     height: 100%;
     min-height: 100%;
-    padding: 0 122px;
     overflow: hidden;
 }
 
@@ -180,6 +182,23 @@ ul {
     line-height: 1.2em;
 }
 
+@media only screen and (min-width: 1025px) {
+ul.main-menu {
+    position: absolute;
+    padding: 15px 0;
+    margin: 0;
+    width: 80px;
+    right: -96px;
+    background-color: #444;
+    border-radius: 50px;
+    z-index: 99;
+    list-style: none;
+    top: 0;
+    -webkit-box-shadow: 0 0 30px -5px rgb(0 0 0 / 15%);
+    -moz-box-shadow: 0 0 30px -5px rgba(0,0,0,.15);
+    box-shadow: 0 0 30px -5px rgb(0 0 0 / 15%);
+}}
+
 .social-links {
     margin: 20px 0;
 }
@@ -199,6 +218,20 @@ ul {
         color: white;
         font-size: 1.5rem;
         margin: 0 0.25rem;
+}
+
+.main-menu li i {
+    color: white;
+    font-size: 30px;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0px 25px;
+    margin: 50px 0;
+}
+
+.main-menu li i:hover {
+    color: var(--primary);
 }
 
 .header-buttons {
@@ -246,17 +279,6 @@ ul {
     border-radius: 30px;
 }
 
-.animated-sections {
-    position: relative;
-    height: 100%;
-    -webkit-perspective: 1500px;
-    -moz-perspective: 1500px;
-    perspective: 1500px;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
 @media only screen and (min-width: 1024px) {
 .animated-section, .section-content, .single-page-content, .content-wrapper {
     border-radius: 30px;
@@ -273,38 +295,95 @@ ul {
     position: absolute;
     height: 100%;
     width: 100%;
-    border-radius: 30px;
-    padding: 0;
-    opacity: 0;
-    overflow: auto;
-    visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translate3d(0,0,0);
-    -moz-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-position: 50% 50%;
-    background-size: cover;
 }
 
-.animated-section {
-    background-color: #222; 
+.section-content--home {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-.animated-section>.section-content {
-    padding: 60px;
-    background-color: #fff;
+.section-content--home h1 {
+    color: white;
+    font-size: 5rem;
+    line-height: 6.5rem;
+}
+
+.section-content--home h4 {
+    color: white;
+    font-size: 2rem;
+    padding-top: 2rem;
+}
+
+/* Text animation */
+.container > .static-txt {
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+    font-size: 5rem;
+  }
+  
+  .container > .dynamic-txt {
+    color: var(--primary);
+    font-size:50px;
+    height:70px;
+    line-height:70px;
+    overflow:hidden;
+    margin-left:0 0 0 15px;
+    padding-left: 15px;
+    text-align: center;
+  }
+  .dynamic-txt > li {
+    list-style:none;
+    font-weight:500;
     position: relative;
+    animation: slide 6s steps(2) infinite;
+  }
+  @keyframes slide{
+    100% {
+      top: -70px;
+    }
+  }
+  .dynamic-txt li span {
+    margin:5px 0;
+    line-height:70px;
+  }
+
+  
+  .dynamic-txt li span::after {
+    position:absolute;
+    content:'';
+    left:0;
+    height:100%;
+    width:100%;
+    line-height:70px;
+    background:var(--background);
+    border-left: 2px solid var(--primary);
+    animation: typing 3s steps(10) infinite;
+  }
+  
+  @keyframes typing {
+    40%,60% {left: calc(100% + 30px);}
+    100% {left:0;}
+  }
+
+  /* end text animation */
+
+  /* animation background */
+  .lm-animated-bg {
+    position: absolute;
+    width: auto;
     height: auto;
-    width: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translate3d(0,0,0);
-    -o-transform: translate3d(0,0,0);
-    -moz-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    -ms-transform: none;
+    top: -18px;
+    left: -18px;
+    right: -18px;
+    bottom: -18px;
+    background-image: url(https://lmpixels.com/wp/breezycv-wp-lin/demo6-dark/wp-content/uploads/sites/6/2020/06/main_bg.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
 }
+/* fin animation background */
